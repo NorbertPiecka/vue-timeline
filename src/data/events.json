@@ -1,0 +1,92 @@
+[
+    {
+        "id": 1,
+        "category_name": "breaking point",
+        "category_color": "#49A80E",
+        "name": "Start of Second World War",
+        "description": "World War II began in Europe on September 1, 1939, when Germany invaded Poland. Great Britain and France responded by declaring war on Germany on September 3. World War II, the largest and deadliest conflict in human history, involved more than 50 nations and was fought on land, sea and air in nearly every part of the world. Also known as the Second World War, it was caused in part by the economic crisis of the Great Depression and by political tensions left unresolved following the end of World War I.",
+        "start_date": "1939-09-01",
+        "end_date": "1939-09-01",
+        "image": "https://cdn.britannica.com/26/188426-050-2AF26954/Germany-Poland-September-1-1939.jpg"
+    },
+    {
+        "id": 2,
+        "category_name": "battle",
+        "category_color": "#BA3722",
+        "name": "Defense of Poland",
+        "description": "The Invasion of Poland, also known as the September Campaign, Polish Campaign, War of Poland of 1939, and Polish Defensive War of 1939 (1 September – 6 October 1939), was a joint attack on the Republic of Poland by Nazi Germany, the Slovak Republic, and the Soviet Union; which marked the beginning of World War II. The German invasion began on 1 September 1939, one week after the signing of the Molotov–Ribbentrop Pact between Germany and the Soviet Union, and one day after the Supreme Soviet of the Soviet Union had approved the pact. German forces invaded Poland from the north, south, and west the morning after the Gleiwitz incident. Slovak military forces advanced alongside the Germans in northern Slovakia. As the Wehrmacht advanced, Polish forces withdrew from their forward bases of operation close to the Germany–Poland border to more established defense lines to the east. After the mid-September Polish defeat in the Battle of the Bzura, the Germans gained an undisputed advantage. Polish forces then withdrew to the southeast where they prepared for a long defence of the Romanian Bridgehead and awaited expected support and relief from France and the United Kingdom",
+        "start_date": "1939-09-01",
+        "end_date": "1939-10-02",
+        "image": "https://static01.nyt.com/images/2020/08/30/books/review/Snyder1/Snyder1-videoSixteenByNineJumbo1600.jpg"
+    },
+    {
+        "id": 3,
+        "category_name": "battle",
+        "category_color": "#BA3722",
+        "name": "Attack on Pearl Harbor",
+        "description": "The attack on Pearl Harbor was a surprise military strike by the Imperial Japanese Navy Air Service upon the United States against the U.S. naval base at Pearl Harbor in Honolulu, Hawaii, just before 8:00 a.m. on Sunday, December 7, 1941",
+        "start_date": "1941-12-07",
+        "end_date": "1941-12-07",
+        "image": "https://cdn.britannica.com/81/71381-050-0042470B/battleship-attack-Pearl-Harbor-Japanese-Hawaii-December-7-1941.jpg"
+    },
+    {
+        "id": 4,
+        "category_name": "pact",
+        "category_color": "#972CB8",
+        "name": "USA join an Alliance",
+        "description": "The United States is generally considered to have entered the conflict with the 7 December 1941 surprise attack on Pearl Harbor by the Empire of Japan and exited it with the 2 September 1945 surrender of Japan.",
+        "start_date": "1941-12-07",
+        "end_date": "1941-12-07",
+        "image": "https://warfarehistorynetwork.com/wp-content/uploads/2017/06/african-americans-wwii-001_crop.jpg"
+    },
+    {
+        "id": 5,
+        "category_name": "battle",
+        "category_color": "#BA3722",
+        "name": "Normandy landings",
+        "description": "The Normandy landings were the landing operations and associated airborne operations on Tuesday, 6 June 1944 of the Allied invasion of Normandy in Operation Overlord during World War II. Codenamed Operation Neptune and often referred to as D-Day, it is the largest seaborne invasion in history.",
+        "start_date": "1944-06-06",
+        "end_date": "1944-06-06",
+        "image": "https://theddaystory.com/wp-content/uploads/2017/12/PhoNor-USNA-p012623-Omaha-9-10-Jun-unloading.jpg"
+    },
+    {
+        "id": 6,
+        "category_name": "science",
+        "category_color": "#2893B5",
+        "name": "Project Manhattan",
+        "description": "The Manhattan Project was a program of research and development undertaken during World War II to produce the first nuclear weapons. It was led by the United States in collaboration with the United Kingdom and with support from Canada.",
+        "start_date": "1942-08-12",
+        "end_date": "1945-07-16",
+        "image": "https://ethos.lps.library.cmu.edu/article/id/35/image7.jpeg"
+    },
+    {
+        "id": 7,
+        "category_name": "science",
+        "category_color": "#2893B5",
+        "name": "Little boy and fat man",
+        "description": "Little Boy was the name of the type of atomic bomb used in the bombing of the Japanese city of Hiroshima on 6 August 1945 during World War II, making it the first nuclear weapon used in warfare. 'Fat Man' was the codename for the type of nuclear weapon the United States detonated over the Japanese city of Nagasaki on 9 August 1945. It was the second of the only two nuclear weapons ever used in warfare, the first being Little Boy, and its detonation marked the third nuclear explosion in history.",
+        "start_date": "1945-08-06",
+        "end_date": "1945-08-09",
+        "image": "https://www.nationalww2museum.org/sites/default/files/2020-08/HIROSHIMA%20THUMBNAIL%20IMAGE%20-%20Tyler%20Bamford-2.jpg"
+    },
+    {
+        "id": 8,
+        "category_name": "breaking point",
+        "category_color": "#49A80E",
+        "name": "End of War in Europe",
+        "description": "The final battles of the European theatre of World War II continued after the definitive surrender of Nazi Germany to the Allies, signed by Field marshal Wilhelm Keitel on 8 May 1945 in Karlshorst, Berlin.",
+        "start_date": "1945-05-08",
+        "end_date": "1945-05-08",
+        "image": "https://api.army.mil/e2/c/images/2020/05/08/5141b0ad/original.jpg"
+    },
+    {
+        "id": 9,
+        "category_name": "breaking point",
+        "category_color": "#49A80E",
+        "name": "End of Second World War",
+        "description": "After the atomic bomb was dropped on Hiroshima and Nagasaki, Japan surrendered on September 2, 1945, and the Second World War came to an end.",
+        "start_date": "1945-09-02",
+        "end_date": "1945-09-02",
+        "image": "https://www.toronto.ca/wp-content/uploads/2017/10/879e-f1266_it96241.jpg"
+    }
+]
