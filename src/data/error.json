@@ -1,0 +1,10 @@
+{
+    "id": 404,
+    "category_name": "error",
+    "category_color": "#49A80E",
+    "name": "Page not found",
+    "description": "This page has not been found",
+    "start_date": "1939-09-01",
+    "end_date": "1939-09-01",
+    "image": ":("
+}

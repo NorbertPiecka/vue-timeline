@@ -14,13 +14,12 @@
             </template>
             <template #[`item.actions`]="{item}">
                 <div>
-                    <router-link class="btn btn-outline-danger m-1 p-1" :to="`/delete/event/${ item.id }`">DELETE</router-link>
+                    <router-link class="btn btn-outline-danger m-1 p-1" :to="{ name: 'DeleteEvent', params: { id: item.id } }">DELETE</router-link>
                     <router-link class="btn btn-outline-info m-1 p-1" :to="`/update/event/${ item.id }`">UPDATE</router-link>
-                    <router-link class="btn btn-outline-secondary m-1 p-1" :to="`/check/event/${ item.id }`">CHECK</router-link>
+                    <router-link class="btn btn-outline-secondary m-1 p-1" :to="{ name: 'CheckEvent', params: { id: item.id } }">CHECK</router-link>
                 </div>
             </template>
         </v-data-table>
-        <hr><hr>
     </div>
 </template>
 
