@@ -34,7 +34,14 @@ export default {
     },
     methods: {
         deleteEvent: function (id) {
-            console.log("Hello event deleted " + id);
+            var data = JSON.parse(window.localStorage.getItem('events'));
+            for(let [i, event] of data.entries()){
+                if(event.id === parseInt(id)){
+                    data.splice(i,1);
+                }
+            }
+            window.localStorage.setItem('events', JSON.stringify(data));
+            window.location.href = "/home/timeline/";
         }
     },
     components: { MainHeader, MainFooter }

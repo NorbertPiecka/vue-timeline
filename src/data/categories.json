@@ -1,0 +1,18 @@
+[
+    {
+        "name" : "battle",
+        "color" : "#BA3722"
+    },
+    {
+        "name" : "breaking point",
+        "color" : "#49A80E"
+    },
+    {
+        "name" : "pact",
+        "color" : "#972CB8"
+    },
+    {
+        "name" : "science",
+        "color" : "#2893B5"
+    }
+]

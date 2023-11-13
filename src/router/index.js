@@ -4,6 +4,7 @@ import TimelineHome from '../views/TimelineHome'
 import TableHome from '../views/TableHome'
 import CheckEvent from '../views/CheckEvent'
 import DeleteEvent from '../views/DeleteEvent'
+import UpdateEvent from '../views/UpdateEvent'
 
 const router = createRouter({
     history: createWebHistory(),
@@ -34,7 +35,14 @@ const router = createRouter({
             name: "DeleteEvent",
             component: DeleteEvent,
             props: true
+        },
+        {
+            path: '/update/event/:id',
+            name: "UpdateEvent",
+            component: UpdateEvent,
+            props: true
         }
+        
     ]
 })
 

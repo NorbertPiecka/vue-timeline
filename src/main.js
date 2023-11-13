@@ -4,8 +4,18 @@ import vuetify from './plugins/vuetify'
 import { loadFonts } from './plugins/webfontloader'
 import router from './router'
 import StartEvents from './data/events'
+import Categories from './data/categories'
 
-window.localStorage.setItem('events', JSON.stringify(StartEvents));
+if(!JSON.parse(window.localStorage.getItem('events'))){
+  window.localStorage.setItem('events', JSON.stringify(StartEvents));
+}
+
+if(!window.localStorage.getItem('index')){
+  window.localStorage.setItem('index', 10);
+}
+
+window.localStorage.setItem('categories', JSON.stringify(Categories));
+
 loadFonts()
 
 createApp(App)

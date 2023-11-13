@@ -5,18 +5,18 @@
         <a class="p-2 btn btn-success m-2" href="#">Add New Event</a>
     </div>
     <div class="container d-flex flex-column align-items-center justify-content-center">
-        <v-data-table :items="events" :headers="headers" class="table table-light table-striped">
+        <v-data-table :items="events" :headers="headers" :sort-by="id" class="table table-light table-striped">
             <template #[`item.category_color`]="{item}">
-                <div :style="{'color':item.category_color}">&#9632;</div>
+                <div :style="{'color': item.category_color}">&#9632;</div>
             </template>
             <template #[`item.image`]="{item}">
                 <img :src="`${ item.image }`" width="200" :alt="`${ item.image }`">
             </template>
             <template #[`item.actions`]="{item}">
                 <div>
+                    <router-link class="btn btn-outline-secondary m-1 p-1" :to="{ name: 'CheckEvent', params: { id: item.id } }">SEE</router-link>
+                    <router-link class="btn btn-outline-info m-1 p-1" :to="{ name: 'UpdateEvent', params: { id: item.id } }">EDIT</router-link>
                     <router-link class="btn btn-outline-danger m-1 p-1" :to="{ name: 'DeleteEvent', params: { id: item.id } }">DELETE</router-link>
-                    <router-link class="btn btn-outline-info m-1 p-1" :to="`/update/event/${ item.id }`">UPDATE</router-link>
-                    <router-link class="btn btn-outline-secondary m-1 p-1" :to="{ name: 'CheckEvent', params: { id: item.id } }">CHECK</router-link>
                 </div>
             </template>
         </v-data-table>
