@@ -61,22 +61,51 @@ export default {
             var data = JSON.parse(window.localStorage.getItem('events'));
             var categories = JSON.parse(window.localStorage.getItem('categories'));
             var modifiedEvent = {};
-            modifiedEvent['id'] = id;
-            modifiedEvent['name'] = this.name;
-            modifiedEvent['start_date'] = this.start_date;
-            modifiedEvent['end_date'] = this.end_date;
-            modifiedEvent['description'] = this.description;
-            modifiedEvent['category_name'] = this.category;
-            modifiedEvent['category_color'] = categories.find(c => c.name === this.category).color;
-            modifiedEvent['image'] = this.image;
-            for(let [i, event] of data.entries()){
-                if(event.id === parseInt(id)){
-                    data.splice(i,1);
-                }
+            var isValid = true;
+
+            if(!this.name || this.name.length<3){
+                alert('Wrong event name! At least 3 characters!');
+                isValid = false;
             }
-            data.push(modifiedEvent);
-            window.localStorage.setItem('events', JSON.stringify(data));
-            window.location.href = "/home/timeline/";
+            if(!this.start_date || this.start_date < '1939-09-01' || this.start_date > '1945-09-02'){
+                alert('Wrong Start Date!');
+                isValid = false;
+            }
+            if(!this.end_date || this.end_date < '1939-09-01' || this.end_date > '1945-09-02'){
+                alert('Wrong End Date!');
+                isValid = false;
+            }
+            if(this.start_date > this.end_date){
+                alert('Start Sate can\'t be smaller than End Date!');
+                isValid = false;
+            }
+            if(!this.description || this.description.length < 3){
+                alert('Description in too short!');
+                isValid = false;
+            }
+            if(!this.category){
+                alert('Category hasn\'t been choosen!');
+                isValid = false;
+            }
+
+            if(isValid){
+                modifiedEvent['id'] = id;
+                modifiedEvent['name'] = this.name;
+                modifiedEvent['start_date'] = this.start_date;
+                modifiedEvent['end_date'] = this.end_date;
+                modifiedEvent['description'] = this.description;
+                modifiedEvent['category_name'] = this.category;
+                modifiedEvent['category_color'] = categories.find(c => c.name === this.category).color;
+                modifiedEvent['image'] = this.image;
+                for(let [i, event] of data.entries()){
+                    if(event.id === parseInt(id)){
+                        data.splice(i,1);
+                    }
+                }
+                data.push(modifiedEvent);
+                window.localStorage.setItem('events', JSON.stringify(data));
+                this.$router.push('/home/table').then(()=> { this.$router.go() });
+            }
         }
     },
     components: {

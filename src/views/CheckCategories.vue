@@ -2,8 +2,11 @@
     <MainHeader />
     <div class="container d-flex flex-column align-items-center justify-content-center">
         <h4 class="p-2 text-white bg-dark bg-opacity-50">Categories</h4>
-        <router-link class="p-2 btn btn-info m-2 text-white" to="/add/category">Add Category</router-link>
-        <v-data-table :items="categories" :headers="headers" class="table table-light table-striped">
+        <div>
+            <router-link class="p-2 btn btn-info m-2 text-white" to="/add/category">Add Category</router-link>
+            <router-link class="p-2 btn btn-warning m-2 text-white" to="/home/table">Go back</router-link>
+        </div>
+        <v-data-table :items="categories" :headers="headers" :sort-by="sortBy" class="table table-light table-striped">
             <template #[`item.color`]="{item}">
                 <div :style="{'color': item.color}">&#9632;</div>
             </template>
@@ -34,7 +37,8 @@ export default {
     data() {
         return {
             categories: data,
-            headers: headers
+            headers: headers,
+            sortBy: [{key: 'name'}]
         };
     },
     components: { MainHeader, MainFooter }

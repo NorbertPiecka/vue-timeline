@@ -8,7 +8,7 @@
         </div>
     </div>
     <div class="container d-flex flex-column align-items-center justify-content-center">
-        <v-data-table :items="events" :headers="headers" class="table table-light table-striped">
+        <v-data-table :items="events" :headers="headers" :sort-by="sortBy" class="table table-light table-striped">
             <template #[`item.category_color`]="{item}">
                 <div :style="{'color': categories[getIndex(item.category_name)].color}">&#9632;</div>
             </template>
@@ -47,7 +47,8 @@ export default {
         return {
             events: data,
             categories: categories,
-            headers: headers
+            headers: headers,
+            sortBy: [{key: 'id'}]
         }
     },
     methods: {
@@ -62,7 +63,6 @@ export default {
             });
             return index;
         }
-
     }
 }
 

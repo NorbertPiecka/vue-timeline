@@ -7,7 +7,7 @@
         <div>
             <div class="form-group">
                 <button class="btn btn-lg btn-danger m-2" v-on:click="deleteEvent(event.id)">YES</button>
-                <a class="btn btn-lg btn-info m-2" href="/home/timeline">NO</a>
+                <router-link class="btn btn-lg btn-info m-2" to="/home/table">NO</router-link>
             </div>
         </div>
     </div>
@@ -41,7 +41,7 @@ export default {
                 }
             }
             window.localStorage.setItem('events', JSON.stringify(data));
-            window.location.href = "/home/timeline/";
+            this.$router.push('/home/table').then(()=> { this.$router.go() });
         }
     },
     components: { MainHeader, MainFooter }

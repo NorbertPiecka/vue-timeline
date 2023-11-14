@@ -41,23 +41,32 @@ export default {
             var events = JSON.parse(window.localStorage.getItem('events'));
             var new_events = [];
             var newCategory = {};
-            for(let [i, category] of data.entries()){
-                if(category.name === name){
-                    data.splice(i,1);
-                }
+            var isValid = true;
+
+            if(!this.category_name || this.category_name.length < 3){
+                alert('Category name too short!');
+                isValid = false;
             }
-            for(let event of events){
-                if(event.category_name === name){
-                    event['category_name'] = this.category_name;
+            
+            if(isValid) {
+                for(let [i, category] of data.entries()){
+                    if(category.name === name){
+                        data.splice(i,1);
+                    }
                 }
-                new_events.push(event);
+                for(let event of events){
+                    if(event.category_name === name){
+                        event['category_name'] = this.category_name;
+                    }
+                    new_events.push(event);
+                }
+                newCategory['name'] = this.category_name;
+                newCategory['color'] = this.color;
+                data.push(newCategory);
+                window.localStorage.setItem('events', JSON.stringify(new_events));
+                window.localStorage.setItem('categories', JSON.stringify(data));
+                this.$router.push('/check/categories').then(()=> { this.$router.go() });
             }
-            newCategory['name'] = this.category_name;
-            newCategory['color'] = this.color;
-            data.push(newCategory);
-            window.localStorage.setItem('events', JSON.stringify(new_events));
-            window.localStorage.setItem('categories', JSON.stringify(data));
-            window.location.href = "/check/categories";
         }
     },
     components: {

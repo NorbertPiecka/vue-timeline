@@ -3,13 +3,13 @@
     <div class="container d-flex flex-column align-items-center justify-content-center">
         <div class="bg-dark bg-opacity-50">
             <h1 class="text-white">Are you really want to remove category "<span style="color: #D1642E">{{ category.name }}</span>"?</h1>
-            <h2 class="text-white">You will also delete events: </h2>
+            <h2 v-if="getArrayLength(events)>0" class="text-white">You will also delete events: </h2>
             <h3 v-for="event in events"  :key="event.id" class="text-red">{{ event.name }}</h3>
         </div>
         <div>
             <div class="form-group">
                 <button class="btn btn-lg btn-danger m-2" v-on:click="deleteCategory(category.name)">YES</button>
-                <a class="btn btn-lg btn-info m-2" href="/check/categories">NO</a>
+                <router-link class="btn btn-lg btn-info m-2" to="/check/categories">NO</router-link>
             </div>
         </div>
     </div>
@@ -63,7 +63,10 @@ export default {
             }
             window.localStorage.setItem('events', JSON.stringify(new_events));
             window.localStorage.setItem('categories', JSON.stringify(data));
-            window.location.href = "/check/categories";
+            this.$router.push('/check/categories').then(()=> { this.$router.go() });
+        },
+        getArrayLength: function (array) {
+            return array.length;
         }
     },
     components: {

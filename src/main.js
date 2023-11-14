@@ -11,7 +11,7 @@ if(!JSON.parse(window.localStorage.getItem('events'))){
 }
 
 if(!window.localStorage.getItem('index')){
-  window.localStorage.setItem('index', 10);
+  window.localStorage.setItem('index', 9);
 }
 
 if(!JSON.parse(window.localStorage.getItem('categories'))){
