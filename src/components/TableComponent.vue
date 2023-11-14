@@ -1,13 +1,16 @@
 <template>
     <hr>
     <div class="container d-flex flex-column align-items-center justify-content-center">
-        <h4 class="p-2">Events</h4>
-        <a class="p-2 btn btn-success m-2" href="#">Add New Event</a>
+        <h4 class="p-2 text-white bg-dark bg-opacity-50">Events</h4>
+        <div>
+            <router-link class="p-2 btn btn-success m-2 text-white" to="/add/event">Add New Event</router-link>
+            <router-link class="p-2 btn btn-info m-2 text-white" to="/check/categories">See categories</router-link>
+        </div>
     </div>
     <div class="container d-flex flex-column align-items-center justify-content-center">
-        <v-data-table :items="events" :headers="headers" :sort-by="id" class="table table-light table-striped">
+        <v-data-table :items="events" :headers="headers" class="table table-light table-striped">
             <template #[`item.category_color`]="{item}">
-                <div :style="{'color': item.category_color}">&#9632;</div>
+                <div :style="{'color': categories[getIndex(item.category_name)].color}">&#9632;</div>
             </template>
             <template #[`item.image`]="{item}">
                 <img :src="`${ item.image }`" width="200" :alt="`${ item.image }`">
@@ -25,6 +28,7 @@
 
 <script>
 var data = JSON.parse(window.localStorage.getItem('events'));
+var categories = JSON.parse(window.localStorage.getItem('categories'));
 var headers = [
     {title: 'ID', key: 'id', width: '1%'},
     {title: 'Name', key: 'name', width: '1%'},
@@ -42,8 +46,23 @@ export default {
     data () {
         return {
             events: data,
+            categories: categories,
             headers: headers
         }
+    },
+    methods: {
+        getIndex: function(name) {
+            var data = JSON.parse(window.localStorage.getItem('categories'));
+            var index = -1;
+            data.find(function(item, i){
+                if(item.name === name){
+                    index = i;
+                    return i;
+                }
+            });
+            return index;
+        }
+
     }
 }
 
@@ -55,8 +74,17 @@ td:hover {
 }
 tr:nth-child(even) {
     background-color: #bdb5a2;
+    border: 1px solid black;
 }
 tr:nth-child(odd) {
     background-color: #ada797;
+    border: 1px solid black;
+}
+td{
+    border: 1px solid black;
+}
+th{
+    background-color: #fff8dc;
+    border: 1px solid #a09465;
 }
 </style>

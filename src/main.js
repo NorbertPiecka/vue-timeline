@@ -14,7 +14,9 @@ if(!window.localStorage.getItem('index')){
   window.localStorage.setItem('index', 10);
 }
 
-window.localStorage.setItem('categories', JSON.stringify(Categories));
+if(!JSON.parse(window.localStorage.getItem('categories'))){
+  window.localStorage.setItem('categories', JSON.stringify(Categories));
+}
 
 loadFonts()
 
