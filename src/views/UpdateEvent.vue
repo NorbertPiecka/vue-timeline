@@ -22,9 +22,14 @@
             </select>
 
             <label for="image">Image path</label>
-            <input type="text" class="form-control" v-model="image" >
+            <input type="file" id="file" ref="myFile" class="form-control" @change="uploadFile" >
 
             <button class="btn btn-lg btn-info m-2" v-on:click="updateEvent(event.id)">Submit</button>
+
+            <div id="preview">
+                <img v-if="image" :src="image" width="400"/>
+                <img v-else :src="event.image" width="400"/>
+            </div>
         </div>
     </div>
     <MainFooter />
@@ -53,13 +58,14 @@ export default {
             description: event.description,
             start_date: event.start_date,
             end_date: event.end_date,
-            image: event.image
+            image: ''
         };
     },
     methods: {
         updateEvent: function (id) {
             var data = JSON.parse(window.localStorage.getItem('events'));
             var categories = JSON.parse(window.localStorage.getItem('categories'));
+            var ev = data.find(e => e.id === parseInt(id));
             var modifiedEvent = {};
             var isValid = true;
 
@@ -87,6 +93,9 @@ export default {
                 alert('Category hasn\'t been choosen!');
                 isValid = false;
             }
+            if(!this.image || this.image.length < 3){
+                this.image = ev.image;
+            }
 
             if(isValid){
                 modifiedEvent['id'] = id;
@@ -106,6 +115,12 @@ export default {
                 window.localStorage.setItem('events', JSON.stringify(data));
                 this.$router.push('/home/table').then(()=> { this.$router.go() });
             }
+        },
+        uploadFile: function (file) {
+            const fileData = file.target.files[0];
+            const reader = new FileReader();
+            reader.readAsDataURL(fileData);
+            reader.onload = (ev) => { this.image = ev.target.result };
         }
     },
     components: {

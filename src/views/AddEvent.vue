@@ -21,9 +21,13 @@
             </select>
 
             <label for="image">Image path</label>
-            <input type="text" class="form-control" v-model="image" >
+            <input type="file" id="file" ref="myFile" class="form-control" @change="uploadFile" >
 
             <button class="btn btn-lg btn-info m-2" v-on:click="addEvent()">Submit</button>
+
+            <div id="preview">
+                <img v-if="image" :src="image" width="400"/>
+            </div>
         </div>
     </div>
     <MainFooter />
@@ -79,6 +83,10 @@ export default {
                 alert('Category hasn\'t been choosen!');
                 isValid = false;
             }
+            if(!this.image){
+                alert('No image uploaded!');
+                isValid = false;
+            }
 
             if(isValid){
                 newEvent['id'] = id;
@@ -94,6 +102,12 @@ export default {
                 window.localStorage.setItem('index', id);
                 this.$router.push('/home/table').then(()=> { this.$router.go() });
             }
+        },
+        uploadFile: function (file) {
+            const fileData = file.target.files[0];
+            const reader = new FileReader();
+            reader.readAsDataURL(fileData);
+            reader.onload = (ev) => { this.image = ev.target.result };
         }
     },
     components: {
