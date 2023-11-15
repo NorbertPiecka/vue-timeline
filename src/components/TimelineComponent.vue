@@ -2,8 +2,9 @@
     
     <div class="container d-flex flex-row align-items-center justify-content-evenly text-white bg-dark bg-opacity-50">
         <label for="category">Event Category</label>
+        <p></p>
         <select class="form-select form-select-sm" v-model="choosen_category" aria-label="category-select" :on-change="filterEvents(choosen_category)" events.sync="events">
-            <option class="selected-option" selected :value="`${choosen_category}`">{{ stringToUpper(choosen_category) }}</option>
+            <option class="selected-option" selected :value="`${choosen_category}`">{{ stringToUpper(choosen) }}</option>
             <option value="ALL">{{ stringToUpper('all') }}</option>
             <option v-for="category in categories" :key="category.name" :value="`${category.name}`" :style="{'color': category.color}">{{ stringToUpper(category.name) }}</option>
         </select>
@@ -14,7 +15,7 @@
 
 export default {
     name: "TimelineComponent",
-    props: ['events','categories'],
+    props: ['events','categories','choosen'],
     data () {
         return {
             choosen_category: 'all'
@@ -22,7 +23,10 @@ export default {
     },
     methods: {
         stringToUpper: function(text){
-            return text.toUpperCase();
+            if(text){
+                return text.toUpperCase();
+            }
+            return 'ALL';
         },
         filterEvents: function(category_name){
             if(category_name && category_name!='all'){

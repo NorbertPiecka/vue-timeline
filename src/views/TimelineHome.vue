@@ -1,6 +1,6 @@
 <template>
     <MainHeader />
-    <TimelineComponent :events="events" :categories="categories" />
+    <TimelineComponent :events="events" :categories="categories" :choosen="cat" />
     <MainFooter />
 </template>
 
@@ -31,7 +31,8 @@ export default {
         var categories = JSON.parse(window.localStorage.getItem('categories'));
         return {
             events: events,
-            categories: categories
+            categories: categories,
+            cat: cat
         }
     },
     components: { MainHeader, TimelineComponent, MainFooter }
