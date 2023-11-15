@@ -1,6 +1,6 @@
 <template>
     <MainHeader />
-    <TimelineComponent />
+    <TimelineComponent :events="events" :categories="categories" />
     <MainFooter />
 </template>
 
@@ -12,6 +12,28 @@ import TimelineComponent from '@/components/TimelineComponent.vue';
 
 export default {
     name: "TimelineHome",
+    props: ["cat_name"],
+    data () {
+        var cat = this.$route.params.cat_name;
+        var events = JSON.parse(window.localStorage.getItem('events'));
+        if(cat && cat != 'all'){
+            var new_events = [];
+            for(let event of events){
+                if(event.category_name === cat){
+                    new_events.push(event);
+                }
+            }
+            events = new_events;
+        }
+        console.log(events);
+        events.sort(function(a,b) { return (new Date(a.start_date).getTime() - new Date(b.start_date).getTime()) || (new Date(a.end_date).getTime() - new Date(b.end_date).getTime())});
+        console.log(events);
+        var categories = JSON.parse(window.localStorage.getItem('categories'));
+        return {
+            events: events,
+            categories: categories
+        }
+    },
     components: { MainHeader, TimelineComponent, MainFooter }
 }
 

@@ -48,7 +48,9 @@ export default {
             events: data,
             categories: categories,
             headers: headers,
-            sortBy: [{key: 'id'}]
+            sortBy: [{key: 'id'}],
+            f_start_date: '1939-09-01',
+            f_end_date: '1945-09-02'
         }
     },
     methods: {
@@ -86,5 +88,14 @@ td{
 th{
     background-color: #fff8dc;
     border: 1px solid #a09465;
+}
+.own-filter {
+    background-color: rgb(31, 31, 31);
+    color: white;
+    text-decoration: none;
+}
+.own-filter:hover {
+    background-color: rgb(170, 163, 124);
+    color: white;
 }
 </style>

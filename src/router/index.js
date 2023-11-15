@@ -25,6 +25,12 @@ const router = createRouter({
             component: TimelineHome
         },
         {
+            path: '/home/timeline/:cat_name',
+            name: 'TimelineHomeCategory',
+            component: TimelineHome,
+            props: true
+        },
+        {
             path: '/home/table',
             name: "TableHome",
             component: TableHome
