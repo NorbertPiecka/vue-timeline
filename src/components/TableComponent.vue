@@ -20,7 +20,7 @@
         </div>
         <button class="btn btn-sm btn-info col m-2" v-on:click="filterEvents()">Filter</button>
     </div>
-    <div class="container d-flex flex-column align-items-center justify-content-center">
+    <div v-if="events" class="container d-flex flex-column align-items-center justify-content-center">
         <v-data-table :items="events" :headers="headers" :sort-by="sortBy" class="table table-light table-striped">
             <template #[`item.category_color`]="{item}">
                 <div :style="{'color': categories[getIndex(item.category_name)].color}">&#9632;</div>
@@ -40,23 +40,22 @@
 </template>
 
 <script>
-var data = JSON.parse(window.localStorage.getItem('events'));
-var categories = JSON.parse(window.localStorage.getItem('categories'));
-var headers = [
-    {title: 'ID', key: 'id', width: '1%'},
-    {title: 'Name', key: 'name', width: '1%'},
-    {title: 'Description', key: 'description', sortable: false},
-    {title: 'Category name', key: 'category_name', width: '1%'},
-    {title: 'Category color', key: 'category_color', width: '1%'},
-    {title: 'Start Date', key: 'start_date', width: '1%'},
-    {title: 'End Date', key: 'end_date', width: '1%'},
-    {title: 'Image', key: 'image', sortable: false, width: '1%'},
-    {title: 'Actions', key: 'actions', sortable: false, width: '1%'}
-]
-
 export default {
     name: "TableComponent",
     data () {
+        var data = JSON.parse(window.localStorage.getItem('events'));
+        var categories = JSON.parse(window.localStorage.getItem('categories'));
+        var headers = [
+            {title: 'ID', key: 'id', width: '1%'},
+            {title: 'Name', key: 'name', width: '1%'},
+            {title: 'Description', key: 'description', sortable: false},
+            {title: 'Category name', key: 'category_name', width: '1%'},
+            {title: 'Category color', key: 'category_color', width: '1%'},
+            {title: 'Start Date', key: 'start_date', width: '1%'},
+            {title: 'End Date', key: 'end_date', width: '1%'},
+            {title: 'Image', key: 'image', sortable: false, width: '1%'},
+            {title: 'Actions', key: 'actions', sortable: false, width: '1%'}
+        ]   
         return {
             events: data,
             categories: categories,
