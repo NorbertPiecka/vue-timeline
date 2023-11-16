@@ -4,12 +4,25 @@
         <label for="category">Event Category</label>
         <p></p>
         <select class="form-select form-select-sm" v-model="choosen_category" aria-label="category-select" :on-change="filterEvents(choosen_category)" events.sync="events">
-            <option class="selected-option" selected :value="`${choosen_category}`">{{ stringToUpper(choosen) }}</option>
-            <option value="ALL">{{ stringToUpper('all') }}</option>
+            <option value="all">{{ stringToUpper('all') }}</option>
             <option v-for="category in categories" :key="category.name" :value="`${category.name}`" :style="{'color': category.color}">{{ stringToUpper(category.name) }}</option>
         </select>
     </div>
-    <p v-for="event in events" :key="event.id">{{event.name}}</p>
+    <v-timeline align="start">
+        <v-timeline-item v-for="event in events" :key="event.id" :dot-color="categories[getIndex(event.category_name)].color" fill-dot>
+            <v-card class="own-card">
+                <v-card-title :style="{'color': categories[getIndex(event.category_name)].color, 'background': `url('${event.image}')`}">
+                    {{ event.name }}
+                </v-card-title>
+                <v-card-text class="p-3 own-card">
+                    <p>{{ getTextShortcut(event.description) }}</p>
+                </v-card-text>
+                <v-btn :color="categories[getIndex(event.category_name)].color" variant="outlined" class="p-2 m-2" :href="`/check/event/${event.id}`">
+                READ MORE
+                </v-btn>
+            </v-card>
+        </v-timeline-item>
+    </v-timeline>
 </template>
 <script>
 
@@ -18,7 +31,7 @@ export default {
     props: ['events','categories','choosen'],
     data () {
         return {
-            choosen_category: 'all'
+            choosen_category: ''
         }
     },
     methods: {
@@ -29,10 +42,30 @@ export default {
             return 'ALL';
         },
         filterEvents: function(category_name){
-            if(category_name && category_name!='all'){
+            if(category_name){
                 var redirect_link = `/home/timeline/${category_name}`;
                 this.$router.push(redirect_link).then(()=> { this.$router.go() });
             }
+            if(category_name && category_name === 'all'){
+                console.log(this.choosen_category);
+            }
+        },
+        getIndex: function(name){
+            var data = JSON.parse(window.localStorage.getItem('categories'));
+            var index = -1;
+            data.find(function(item, i){
+                if(item.name === name){
+                    index = i;
+                    return i;
+                }
+            });
+            return index;
+        },
+        getTextShortcut: function(text){
+            if(text.length<200){
+                return text;
+            }
+            return text.slice(0,200) + '...';
         }
     }
 }
@@ -54,5 +87,9 @@ a:hover{
 }
 .selected-option {
     background-color: beige;
+}
+.own-card{
+    background-color: #B5AE77;
+    height: 5%;
 }
 </style>

@@ -1,8 +1,8 @@
 <template>
     <nav class="navbar navbar-expand-lg navbar-dark opacity-75 align-self-center">
         <div class="container d-flex align-items-center justify-content-center">
-            <router-link class="p-2 bg-opacity-100 m-2 own-header" to="/home/timeline">T I M E L I N E</router-link>
-            <router-link class="navbar-brand bg-opacity-50 p-3 m-1 main-header" to="/home/timeline">The World War 2 Timeline</router-link>
+            <a class="p-2 bg-opacity-100 m-2 own-header" href="/home/timeline/all">T I M E L I N E</a>
+            <a class="navbar-brand bg-opacity-50 p-3 m-1 main-header" href="/home/timeline/all">The World War 2 Timeline</a>
             <router-link class="p-2 bg-opacity-100 m-2 own-header" to="/home/table">T A B L E</router-link>
         </div>
     </nav>
