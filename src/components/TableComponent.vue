@@ -7,6 +7,19 @@
             <router-link class="p-2 btn btn-info m-2 text-white" to="/check/categories">See categories</router-link>
         </div>
     </div>
+    <hr>
+    <div class="container d-flex flex-column align-items-center justify-content-center p-2 ">
+        <h6 class="p-2 text-white bg-dark bg-opacity-50">Filter Start Date of Events</h6>
+        <div class="row text-white m-1">
+            <label class="col">From: </label>
+            <input type="text" class="form-control col" v-model="f_start_date" onfocus="(this.type='date')" onblur="(this.type='text')">
+        </div>
+        <div class="row text-white m-1">
+            <p class="col"> To: </p>
+            <input type="text" class="form-control col" v-model="f_end_date" onfocus="(this.type='date')" onblur="(this.type='text')">
+        </div>
+        <button class="btn btn-sm btn-info col m-2" v-on:click="filterEvents()">Filter</button>
+    </div>
     <div class="container d-flex flex-column align-items-center justify-content-center">
         <v-data-table :items="events" :headers="headers" :sort-by="sortBy" class="table table-light table-striped">
             <template #[`item.category_color`]="{item}">
@@ -64,6 +77,36 @@ export default {
                 }
             });
             return index;
+        },
+        filterEvents: function() {
+            var data = JSON.parse(window.localStorage.getItem('events'));
+            var newEvents = [];
+            var start_time = new Date(this.f_start_date).getTime();
+            var end_time = new Date(this.f_end_date).getTime();
+            var isFilterValid = true;
+
+            if(start_time < new Date('1939-09-01') || start_time > new Date('1945-09-02')){
+                isFilterValid = false;
+            }
+            if(end_time < new Date('1939-09-01') || end_time > new Date('1945-09-02')){
+                isFilterValid = false;
+            }
+            if(start_time > end_time){
+                isFilterValid = false;
+            }
+
+            if(isFilterValid){
+                for(let e of data){
+                    var event_date = new Date(e.start_date).getTime();
+                    if(event_date>=start_time && event_date <=end_time){
+                        newEvents.push(e);
+                    }
+                }
+                newEvents.sort(function(a,b) { return (new Date(a.start_date).getTime() - new Date(b.start_date).getTime()) || (new Date(a.end_date).getTime() - new Date(b.end_date).getTime())});
+                this.events = newEvents;
+            } else {
+                alert('Provided dates are not valid!');
+            }
         }
     }
 }

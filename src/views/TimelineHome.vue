@@ -25,9 +25,7 @@ export default {
             }
             events = new_events;
         }
-        console.log(events);
         events.sort(function(a,b) { return (new Date(a.start_date).getTime() - new Date(b.start_date).getTime()) || (new Date(a.end_date).getTime() - new Date(b.end_date).getTime())});
-        console.log(events);
         var categories = JSON.parse(window.localStorage.getItem('categories'));
         return {
             events: events,
